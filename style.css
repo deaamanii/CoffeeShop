@@ -78,7 +78,6 @@ body {
     }
 }
 
-
 /* Main container */
 .main-container {
     display: flex;
@@ -193,3 +192,57 @@ p {
 .menu-button:hover {
     background-color: #d14a0b;
 }
+
+
+/* Footer Styling */
+.footerWrapper {
+    margin-top: auto; /* Ensures footer stays at the bottom */
+    width: 100%;
+}
+
+.footerContainer {
+    background-color: #4b2e1a;
+    color: #ffffff;
+    padding: 20px 10px;
+    text-align: center;
+}
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerContent p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.footerLinks {
+    margin: 10px 0;
+}
+
+.footerLinks a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+    color: #ffffff;
+}
+
+.footerSocial img {
+    height: 25px;
+    width: 25px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+.footerSocial img:hover {
+    transform: scale(1.2);
+}
+
