@@ -78,3 +78,118 @@ body {
     }
 }
 
+
+/* Main container */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Adjustments for slider and content container */
+.slider-container, .content-container {
+    flex: 1;
+}
+
+/* Adjusting slider-container width */
+.slider-container {
+    max-width: 50%;
+}
+
+/* Adjusting content-container width */
+.content-container {
+    max-width: 50%;
+}
+
+/* Slider container adjustments */
+.slider-container {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+/* Navigation buttons for slider */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Content container styling */
+.content-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    padding: 100px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5c2a02;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: #d14a0b;
+}
