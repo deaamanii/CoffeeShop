@@ -1,0 +1,178 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e5d8;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Header Styling */
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4b2e1a;
+    padding: 15px 20px;
+    width: 100%;
+    z-index: 10;
+}
+
+.headerContainer .logo img {
+    height: 80px;
+    width: auto;
+}
+
+.headerContainer div {
+    display: flex;
+    align-items: center;
+}
+
+.headerContainer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 60px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.headerContainer a:hover {
+    color: #ffd700;
+}
+
+.headerContainer img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.headerContainer .logo a {
+    margin-right: 20px;
+}
+
+.headerContainer a:last-child {
+    margin-right: 0;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .headerContainer {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .headerContainer div {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .headerContainer a {
+        margin-right: 15px;
+        margin-bottom: 10px;
+    }
+
+    .headerContainer .logo img {
+        height: 70px;
+    }
+}
+
+/* Intro Section */
+.intro-section {
+    /*padding: 100px 20px 30px;*/
+    text-align: center;
+    background-color: #f0e5d8;
+}
+
+.intro-section h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: #4b2e1a;
+}
+
+.intro-section p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    background-color: #FFA500;
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff;
+    margin: 10px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: white;
+    color: #FFA500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #FFD700;
+}
+
+/* Highlight Section */
+.highlight-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #4b2e1a;
+    color: #fff;
+}
+
+.highlight-section h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.highlight-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.highlight-image {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container .card {
+        width: 80%;
+        margin: 15px auto;
+    }
+
+    .highlight-image {
+        width: 100%;
+    }
+}
