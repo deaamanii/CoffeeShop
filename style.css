@@ -1,4 +1,10 @@
 /* General Body Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -16,7 +22,6 @@ body {
     align-items: center;
     background-color: #4b2e1a;
     padding: 15px 20px;
-    width: 100%;
     z-index: 10;
 }
 
@@ -78,7 +83,6 @@ body {
     }
 }
 
-
 /* Main container */
 .main-container {
     display: flex;
@@ -91,21 +95,12 @@ body {
 }
 
 /* Adjustments for slider and content container */
-.slider-container, .content-container {
+.slider-container,
+.content-container {
     flex: 1;
 }
 
 /* Adjusting slider-container width */
-.slider-container {
-    max-width: 50%;
-}
-
-/* Adjusting content-container width */
-.content-container {
-    max-width: 50%;
-}
-
-/* Slider container adjustments */
 .slider-container {
     width: 100%;
     max-width: 700px;
@@ -164,7 +159,7 @@ body {
     max-width: 800px;
     width: 100%;
     text-align: center;
-    padding: 100px;
+    padding: 50px 20px; /* Reduced padding for better alignment */
 }
 
 h1 {
@@ -194,3 +189,55 @@ p {
     background-color: #d14a0b;
 }
 
+/* Footer Styling */
+.footerWrapper {
+    margin-top: auto; /* Ensures footer stays at the bottom */
+    width: 100%;
+}
+
+.footerContainer {
+    background-color: #4b2e1a;
+    color: #ffffff;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerContent p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.footerLinks {
+    margin: 10px 0;
+}
+
+.footerLinks a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+    color: #ffffff;
+}
+
+.footerSocial img {
+    height: 25px;
+    width: 25px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+.footerSocial img:hover {
+    transform: scale(1.2);
+}
