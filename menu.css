@@ -1,0 +1,198 @@
+/* General Body Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e5d8;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Header Styling */
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4b2e1a;
+    padding: 15px 20px;
+    z-index: 10;
+}
+
+.headerContainer .logo img {
+    height: 80px;
+    width: auto;
+}
+
+.headerContainer div {
+    display: flex;
+    align-items: center;
+}
+
+.headerContainer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 40px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.headerContainer a:hover {
+    color: #ffd700;
+}
+
+.headerContainer img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.headerContainer .logo a {
+    margin-right: 20px;
+}
+
+.headerContainer a:last-child {
+    margin-right: 0;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .headerContainer {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .headerContainer div {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .headerContainer a {
+        margin-right: 15px;
+        margin-bottom: 10px;
+        font-size: 14px; /* Reduce font size on small screens */
+    }
+
+    .headerContainer .logo img {
+        height: 70px;
+    }
+}
+
+/* Spacer Below Header */
+body > h1 {
+    text-align: center;
+    color: #4b2e1a;
+    font-size: 2.5em; /* Adjust font size for larger headers */
+}
+
+/* Menu Grid */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+/* Menu Items */
+.menu-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.menu-item h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.menu-item p {
+    color: #666;
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+/* Footer Styling */
+.footerWrapper {
+    background-color: #4b2e1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    width: 100%;
+}
+
+.footerContent p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.footerLinks {
+    margin: 10px 0;
+}
+
+.footerLinks a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+    color: #ffffff;
+}
+
+.footerSocial img {
+    height: 25px;
+    width: 25px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+.footerSocial img:hover {
+    transform: scale(1.2);
+}
+
+/* Ensuring Layout Consistency */
+html, body {
+    height: 100%; /* Guarantees the full height for the layout */
+}
+
+/* Responsiveness for Very Small Screens (Below 480px) */
+@media (max-width: 480px) {
+    .headerContainer a {
+        font-size: 12px; /* Further reduce font size for very small screens */
+    }
+
+    .menu-item img {
+        height: 200px; /* Reduce image size for very small screens */
+    }
+
+    body > h1 {
+        font-size: 2em; /* Reduce heading size on small screens */
+    }
+}
