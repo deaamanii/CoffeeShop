@@ -33,7 +33,7 @@ body {
 .headerContainer a {
     color: #ffffff;
     text-decoration: none;
-    margin-right: 60px;
+    margin-right: 40px;
     font-size: 16px;
     transition: color 0.3s ease;
 }
