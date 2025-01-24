@@ -49,7 +49,7 @@
             <!-- Register Form -->
             <div id="registerForm" class="form-container hidden">
                 <h2>Join Coffee Bean</h2>
-                <form id="registerFormElement">
+                <form id="registerFormElement" action="registerController.php" method="POST">
                     <label for="regUsername">Username</label>
                     <input type="text" id="regUsername" name="regUsername" required>
                     <label for="email">Email</label>
@@ -58,9 +58,11 @@
                     <input type="password" id="regPassword" name="regPassword" required>
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
-                    <button type="submit">Register</button>
+                    <button type="submit" name="registerBtn">Register</button>
                 </form>
+                <p id="registerErrorMessage" style="color: red;"></p>
             </div>
+            
         </div>
     </main>
     <script src="login.js"></script>
