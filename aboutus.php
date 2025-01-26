@@ -7,25 +7,9 @@
     <link rel="stylesheet" href="aboutus.css">
 </head>
 <body>
-    <header class="headerContainer">
-        <div class="logo">
-            <a href="index.html"> 
-                <img src="images/logo.png" alt="Coffee Bean Logo">
-            </a>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="menu.html">Menu</a>
-            <a href="contactus.html">Contact Us</a>
-            <a href="login.html">Log In | Register</a>
-        </nav>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="Instagram"></a>
-            <a href="https://www.linkedin.com/"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        </div>
-    </header>
+<?php
+    include 'header.php';
+    ?>
     
     <main>
         <section class="intro-section">

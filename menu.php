@@ -9,25 +9,9 @@
 </head>
 
 <body>
-    <header class="headerContainer">
-        <div class="logo">
-            <a href="index.html">
-                <img src="images/logo.png" alt="Logo">
-            </a>
-        </div>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="menu.html">Menu</a>
-            <a href="contactus.html">Contact Us</a>
-            <a href="login.html">Log In | Register</a>
-        </div>
-        <div>
-            <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="Instagram"></a>
-            <a href="https://www.linkedin.com/"><img src="images/linkedin.png" alt="Linkedin"></a>
-        </div>
-    </header>
+<?php
+    include 'header.php';
+    ?>
 
     <h1>Menu</h1>
     <!-- Div për Menunë e Kafes -->
