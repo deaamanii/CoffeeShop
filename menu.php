@@ -134,7 +134,7 @@
                 <div class="footerLinks">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
-                    <a href="contactus.html">Contact Us</a>
+                    <a href="contactus.php">Contact Us</a>
                 </div>
                 <div class="footerSocial">
                     <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>

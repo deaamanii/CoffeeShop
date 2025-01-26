@@ -21,17 +21,17 @@
             <div class="card">
                 <h3>Subscribe To Save</h3>
                 <p>Never run out of your favorite coffees and save 10% on every order, with free shipping over $30.</p>
-                <a href="login.html"><button class="btn">Log In</button></a>
+                <a href="login.php"><button class="btn">Log In</button></a>
             </div>
             <div class="card">
                 <h3>100% Satisfaction Guaranteed</h3>
                 <p>If you're not 100% satisfied with your coffee, let us know.</p>
-                <a href="contactus.html"><button class="btn">Contact Us</button></a>
+                <a href="contactus.php"><button class="btn">Contact Us</button></a>
             </div>
             <div class="card">
                 <h3>Our Coffees</h3>
                 <p>Browse our list of coffees including a lot of coffee drinks!</p>
-                <a href="menu.html"><button class="btn">Menu</button></a>
+                <a href="menu.php"><button class="btn">Menu</button></a>
             </div>
         </div>
 
@@ -90,7 +90,7 @@
                 <div class="footerLinks">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
-                    <a href="contactus.html">Contact Us</a>
+                    <a href="contactus.php">Contact Us</a>
                 </div>
                 <div class="footerSocial">
                     <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>

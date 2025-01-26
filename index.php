@@ -10,7 +10,6 @@
     <?php
     include 'header.php';
     ?>
-    
     <main class="main-container">
         <div class="slider-container">
             <div class="slides">
@@ -32,7 +31,7 @@
             <h1>Let's Talk Coffee</h1>
             <p>At Coffee Bean, we combine quality, ambiance, and affordability to deliver an exceptional experience. Whether you're here to study, catch up with friends, or simply unwind, we’ve got the perfect blend for you.</p>
             <p>"We believe that coffee is more than just a drink – it’s a moment of sharing, warmth, and community."</p>
-            <a href="menu.html" class="menu-button">Look at Menu</a>
+            <a href="menu.php" class="menu-button">Look at Menu</a>
         </div>
     </main>
 
@@ -47,7 +46,7 @@
                 <div class="footerLinks">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
-                    <a href="contactus.html">Contact Us</a>
+                    <a href="contactus.php">Contact Us</a>
                 </div>
                 <div class="footerSocial">
                     <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
