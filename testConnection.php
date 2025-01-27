@@ -1,10 +1,10 @@
 <?php
-require_once 'DatabaseConnection.php'; // Include the database connection file
+require_once 'DatabaseConnection.php'; 
 
-$db = new DatabaseConnection(); // Instantiate the class
-$conn = $db->startConnection(); // Start the connection
+$dbConnection = new DatabaseConnection();
+$db = $dbConnection->startConnection(); 
 
-if ($conn) {
+if ($db) {
     echo "Connection successful!";
 } else {
     echo "Connection failed!";

@@ -10,25 +10,40 @@ class UserRepository {
         $this->connection = $conn->startConnection();
     }
 
-    public function insertUser($user) {
+    public function getUserByUsername($username) {
+        $query = "SELECT * FROM users WHERE username = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function checkUserExists($username, $email) {
+        $query = "SELECT * FROM users WHERE username = ? OR email = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param('ss', $username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc() ? true : false;
+    }
+
+    public function insertUser($username, $email, $password, $role, $createdAt) {
         $conn = $this->connection;
 
-        $id = $user->getId();
-        $username = $user->getUsername();
-        $email = $user->getEmail();
-        $password = $user->getPassword();
-        $role = $user->getRole();
-        $createdAt = $user->getCreatedAt();
-
-        $sql = "INSERT INTO users (id, username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)";
 
         $statement = $conn->prepare($sql);
 
-        try {
-            $statement->execute([$id, $username, $email, $password, $role, $createdAt]);
-            return true; 
-        } catch (PDOException $e) {
-            return 'Error: ' . $e->getMessage(); 
+        if(!$statement){
+            return 'Error preparing statement: ' . $conn->error;
+        }
+        $statement->bind_param("sssss", $username, $email, $password, $role, $createdAt);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return 'Error executing statement: ' . $statement->error;
         }
     }
 
@@ -37,10 +52,13 @@ class UserRepository {
 
         $sql = "SELECT id, username, email, password, role, created_at FROM users";
 
-        $statement = $conn->query($sql);
-        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $conn->query($sql);
 
-        return $users;
+        if ($result) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return 'Error: ' . $conn->error;
+        }
     }
 
     public function getUserById($id) {
@@ -49,40 +67,57 @@ class UserRepository {
         $sql = "SELECT id, username, email, password, role, created_at FROM users WHERE id=?";
 
         $statement = $conn->prepare($sql);
-        $statement->execute([$id]);
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return $user;
+        if (!$statement) {
+            return 'Error preparing statement: ' . $conn->error;
+        }
+
+        $statement->bind_param("s", $id);
+        $statement->execute();
+
+        $result = $statement->get_result();
+
+        return $result->fetch_assoc();
+    
     }
 
     public function updateUser($id, $username, $email, $password, $role) {
-        try {
-            $conn = $this->connection;
+        $conn = $this->connection;
 
-            $sql = "UPDATE users SET username=?, email=?, password=?, role=? WHERE id=?";
+        $sql = "UPDATE users SET username=?, email=?, password=?, role=? WHERE id=?";
 
-            $statement = $conn->prepare($sql);
+        $statement = $conn->prepare($sql);
 
-            $statement->execute([$username, $email, $password, $role, $id]);
+        if (!$statement) {
+            return 'Error preparing statement: ' . $conn->error;
+        }
 
+        $statement->bind_param("sssss", $username, $email, $password, $role, $id);
+
+        if ($statement->execute()) {
             return "Update was successful";
-        } catch (PDOException $e) {
-            return "Error updating user: " . $e->getMessage();
+        } else {
+            return "Error updating user: " . $statement->error;
         }
     }
 
     public function deleteUser($id) {
-        try {
-            $conn = $this->connection;
+        $conn = $this->connection;
 
-            $sql = "DELETE FROM users WHERE id=?";
+        $sql = "DELETE FROM users WHERE id=?";
 
-            $statement = $conn->prepare($sql);
-            $statement->execute([$id]);
+        $statement = $conn->prepare($sql);
 
+        if (!$statement) {
+            return 'Error preparing statement: ' . $conn->error;
+        }
+
+        $statement->bind_param("s", $id);
+
+        if ($statement->execute()) {
             return "Delete was successful";
-        } catch (PDOException $e) {
-            return "Error deleting user: " . $e->getMessage();
+        } else {
+            return "Error deleting user: " . $statement->error;
         }
     }
 
@@ -92,11 +127,17 @@ class UserRepository {
         $sql = "SELECT id, username, email, password, role, created_at FROM users WHERE role = ?";
 
         $statement = $conn->prepare($sql);
-        $statement->execute([$role]);
-        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $users;
+        if (!$statement) {
+            return 'Error preparing statement: ' . $conn->error;
+        }
+
+        $statement->bind_param("s", $role);
+        $statement->execute();
+
+        $result = $statement->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
-
 ?>
