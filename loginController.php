@@ -1,61 +1,48 @@
 <?php
+session_start();
+
 include_once 'DatabaseConnection.php';
-
-session_start(); // Start the session
-
-// Clear any previous session before logging in
-if (isset($_SESSION['username'])) {
-    session_unset();
-    session_destroy();
-    session_start(); // Start a fresh session
-}
-
-class UserRepository {
-    private $db;
-
-    public function __construct($db) {
-        $this->db = $db;
-    }
-
-    public function getUserByUsername($username) {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-}
+include_once 'UserRepository.php';
 
 $dbConnection = new DatabaseConnection();
 $db = $dbConnection->startConnection();
 $userRepository = new UserRepository($db);
 
-header('Content-Type: application/json');
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-
+   
     if (empty($username) || empty($password)) {
-        echo json_encode(['error' => 'Both username and password are required.']);
+        $_SESSION['message'] = 'Both username and password are required.';
+        $_SESSION['message_type'] = 'error';
+        header("Location: login.php");
         exit();
     }
-
     $user = $userRepository->getUserByUsername($username);
 
     if ($user) {
+        // Use password_verify to check the hashed password
         if (password_verify($password, $user['password'])) {
-            // Start fresh session and set session variables
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
-            echo json_encode(['success' => 'Login successful!']);
+            $_SESSION['message'] = 'Login successful!';
+            $_SESSION['message_type'] = 'success';
+            header("Location:index.php");
             exit();
         } else {
-            echo json_encode(['error' => 'Invalid username or password.']);
-            exit();
+            $_SESSION['message'] = 'Invalid username or password.';
+            $_SESSION['message_type'] = 'error';
+            header("Location: login.php");
+            exit();          
         }
     } else {
-        echo json_encode(['error' => 'Invalid username or password.']);
+        $_SESSION['message'] = 'Invalid username or password.';
+        $_SESSION['message_type'] = 'error';
+        header("Location: login.php");
         exit();
+    }
+    if (!isset($_SESSION['message_type'])) {
+        $_SESSION['message_type'] = '';
     }
 }
 ?>

@@ -1,48 +1,52 @@
 <?php
+session_start();
 include_once 'DatabaseConnection.php';
+include_once 'UserRepository.php';
 
-header('Content-Type: application/json');
+$dbConnection = new DatabaseConnection();
+$db = $dbConnection->startConnection();
+$userRepository = new UserRepository($db);
 
-try {
-    // Check request method
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username = $_POST['regUsername'];
-        $email = $_POST['email'];
-        $password = $_POST['regPassword'];
-        $confirmPassword = $_POST['confirmPassword'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirmPassword']);
 
-        // Validate inputs
-        if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
-            echo json_encode(['error' => 'All fields are required.']);
-            exit();
-        }
-
-        if ($password !== $confirmPassword) {
-            echo json_encode(['error' => 'Passwords do not match.']);
-            exit();
-        }
-
-        // Hash password and save to database
-        include_once 'DatabaseConnection.php';
-        $dbConnection = new DatabaseConnection();
-        $db = $dbConnection->startConnection();
-
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $db->prepare("INSERT INTO users (username, email, password, role) VALUES (:username, :email, :password, 'user')");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $hashedPassword);
-
-        if ($stmt->execute()) {
-            echo json_encode(['success' => 'Registration successful!']);
-        } else {
-            echo json_encode(['error' => 'Failed to register user.']);
-        }
-    } else {
-        echo json_encode(['error' => 'Invalid request method.']);
+    if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
+        echo "All fields are required.";
+        $_SESSION['message_type'] = 'error';
+        exit();
     }
-} catch (Exception $e) {
-    echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
-}
 
+    if ($password !== $confirmPassword) {
+        echo "Passwords do not match.";
+        $_SESSION['message'] = 'Passwords do not match.';
+        $_SESSION['message_type'] = 'error';
+        header("Location: register.php");
+        exit();
+    }
+
+    if ($userRepository->checkUserExists($username, $email)) {
+        $_SESSION['message'] = 'Username or email already exists.';
+        $_SESSION['message_type'] = 'error';
+        header("Location: register.php");
+    }
+
+    $role = "user"; // Vendos rolin e përdoruesit
+    $createdAt = date("Y-m-d H:i:s"); // Vendos kohën e krijimit të përdoruesit
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $inserted = $userRepository->insertUser($username, $email, $hashedPassword, $role, $createdAt);
+
+    if ($inserted === true) {
+        $_SESSION['message'] = "Registration successful! Please log in.";
+        $_SESSION['message_type'] = 'success';
+        header("Location: login.php");
+    } else {
+        $_SESSION['message'] = 'Registration failed. Please try again.';
+        $_SESSION['message_type'] = 'error';
+        header("Location: register.php");
+        exit();
+    }
+}
 ?>

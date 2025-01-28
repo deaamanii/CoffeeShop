@@ -25,15 +25,19 @@
     <input type="password" id="confirmPassword" name="confirmPassword" required>
 
     <button type="submit" name="registerbtn">Register</button>
-</form>
-
+    </form>
         <p>
             <?php
             if (isset($_GET['error'])) {
                 echo '<span style="color:red;">' . htmlspecialchars($_GET['error']) . '</span>';
+            } elseif (isset($_GET['success'])) {
+                echo '<span style="color:green;">' . htmlspecialchars($_GET['success']) . '</span>';
             }
             ?>
+            
         </p>
+        
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

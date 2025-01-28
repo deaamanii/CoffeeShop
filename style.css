@@ -258,3 +258,14 @@ p {
     background-color: #c9302c;
     color: #f8f9fa;
 }
+
+.hidden {
+    display: none;
+}
+
+.message-success {
+    color: green;
+}
+.message-error {
+    color: red; 
+}

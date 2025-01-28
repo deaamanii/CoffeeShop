@@ -8,13 +8,11 @@ class DatabaseConnection {
     private $database = "coffee_bean";
 
     function startConnection() {
-        try {
-            $conn = new PDO("mysql:host={$this->server};port={$this->port};dbname={$this->database}", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conn;
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
-        }
+        $conn = new mysqli($this->server, $this->username, $this->password, $this->database, $this->port);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }    
+        return $conn;
     }
 }
 

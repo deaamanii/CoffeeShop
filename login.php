@@ -1,54 +1,16 @@
 <?php
-include_once 'DatabaseConnection.php';
 
-class UserRepository {
-    private $db;
+include 'header.php';
 
-    public function __construct($db) {
-        $this->db = $db;
-    }
-
-    public function getUserByUsername($username) {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+if (!isset($_SESSION['message_type'])) {
+    $_SESSION['message_type'] = '';
+}
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
 }
 
-$dbConnection = new DatabaseConnection();
-$db = $dbConnection->startConnection();
-$userRepository = new UserRepository($db);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    if (empty($username) || empty($password)) {
-        echo json_encode(['error' => 'Both username and password are required.']);
-        exit();
-    }
-
-    $user = $userRepository->getUserByUsername($username);
-
-    if ($user) {
-        // Use password_verify to check the hashed password
-        if (password_verify($password, $user['password'])) {
-            echo json_encode(['success' => 'Login successful!']);
-            // Redirect or perform actions after successful login
-            exit();
-        } else {
-            echo json_encode(['error' => 'Invalid username or password.']);
-            exit();
-        }
-    } else {
-        echo json_encode(['error' => 'Invalid username or password.']);
-        exit();
-    }
-}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,24 +18,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In | Coffee Bean</title>
     <link rel="stylesheet" href="login.css">
+    <style>
+        .message-success {
+            color: green;
+        }
+        .message-error {
+            color: red;
+        }
+    </style>
+    <script src="script.js"></script>
 </head>
 <body>
 <?php
-    include 'header.php';
     ?>
     <main class="mainContainer">
         <div class="auth-container">
             <div class="toggle-buttons">
-                <button id="loginToggle" class="active">Log In</button>
-                <button id="registerToggle">Register</button>
+                <button id="loginToggle" class="active" onclick="toggleForms('login')">Log In</button>
+                <button id="registerToggle" onclick="toggleForms('register')">Register</button>
             </div>
-
+            <?php
+                if (isset($_SESSION['message'])) {
+                    $message_class  = $_SESSION['message_type'] === 'success' ? 'message-success' : 'message-error';
+                    echo "<p class='$message_class'>{$_SESSION['message']}</p>";
+                    unset($_SESSION['message']);
+                    unset($_SESSION['message_type']);
+                }
+            ?>
             <!-- Login Form -->
             <div id="loginForm" class="form-container">
                 <h2>Welcome to Coffee Bean</h2>
-                <form id="loginFormElement">
+                <form method="post" action="loginController.php" id="loginFormElement">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" >
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">Login</button>
@@ -84,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- Register Form -->
             <div id="registerForm" class="form-container hidden">
                 <h2>Join Coffee Bean</h2>
-                <form id="registerFormElement" action="registerController.php" method="POST">
-                    <label for="regUsername">Username</label>
-                    <input type="text" id="regUsername" name="regUsername" required>
+                <form action="registerController.php" method="POST">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
-                    <label for="regPassword">Password</label>
-                    <input type="password" id="regPassword" name="regPassword" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                     <button type="submit" name="registerBtn">Register</button>
@@ -100,7 +77,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
         </div>
     </main>
-    <script src="login.js"></script>
+    <script>
+        function toggleForms(formType) {
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginToggle = document.getElementById('loginToggle');
+        const registerToggle = document.getElementById('registerToggle');
+
+            if (formType === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                loginToggle.classList.add('active');
+                registerToggle.classList.remove('active');
+            } else {
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                registerToggle.classList.add('active');
+                loginToggle.classList.remove('active');
+            }
+        }
+       
+</script>
+    
     <div class="footerWrapper">
         <footer class="footerContainer">
             <div class="footerContent">
@@ -118,5 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </footer>
     </div>
+
 </body>
 </html>
