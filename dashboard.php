@@ -28,6 +28,7 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
     </div>
     <div class="container">
         <h2>Admins</h2>
+
         <table>
             <tr>
                 <th>ID</th>
@@ -83,6 +84,10 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
             ?>
         </table>
         <h2>Products</h2>
+        <a href="add_product.php" class="btn" style="display: inline-block; padding: 10px 15px; background-color: #4CAF50; 
+    color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
+    ➕ Shto Produkt
+</a>
         <table>
             <tr>
                 <th>ID</th>

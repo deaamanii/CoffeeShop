@@ -1,25 +1,28 @@
 <?php
 session_start();
-include 'db_connect.php';
+include 'DatabaseConnection.php'; // Lidhja me databazën
 
+// Kontrollo nëse përdoruesi është admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
     die("Nuk keni akses për të fshirë produktet!");
 }
 
-if (isset($_GET["id"])) {
-    $id = $_GET["id"];
+$db = new DatabaseConnection();
+$conn = $db->startConnection();
 
-    // Fshi produktin nga databaza
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]); // Siguro që ID është numër për siguri
+
+    // Ekzekuto fshirjen
     $sql = "DELETE FROM products WHERE id = $id";
-    
     if (mysqli_query($conn, $sql)) {
-        // Ridrejto adminin në dashboard pas fshirjes
-        header("Location: dashboard.php?delete=success");
+        mysqli_close($conn); // Mbyll lidhjen me databazën
+        header("Location: dashboard.php?delete=success"); // Ridrejto adminin te dashboard
         exit();
     } else {
-        echo "Gabim: " . mysqli_error($conn);
+        echo "<p style='color:red;'>Gabim: " . mysqli_error($conn) . "</p>";
     }
 } else {
-    echo "ID e produktit mungon!";
+    echo "<p style='color:red;'>ID e produktit mungon!</p>";
 }
 ?>
