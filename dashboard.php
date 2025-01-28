@@ -20,61 +20,7 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Coffee Bean Admin</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-        h2 {
-            color: #333;
-            text-align: center;
-            margin-top: 20px;
-        }
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            box-shadow: 0 2px 5px rgb(120, 123, 126);
-            background-color: #fff;
-        }
-        table, th, td {
-            border: 1px solid #dee2e6;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: rgb(192, 191, 193);
-            color: #fff;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #ddd;
-        }
-        a {
-            color: rgb(120, 123, 126);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .header {
-            background-color: rgb(192, 191, 193);
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <div class="header">

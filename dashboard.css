@@ -1,0 +1,118 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3e5d8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+.header {
+    background-color: #6f4e37;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff8f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Headings */
+h2 {
+    color: #4e342e;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Headers */
+th {
+    background-color: #8d6e63;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+}
+
+/* Table Data */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #4e342e;
+}
+
+/* Alternating Row Colors */
+tr:nth-child(even) {
+    background-color: #f3e5d8;
+}
+
+/* Hover Effect */
+tr:hover {
+    background-color: #d7ccc8;
+}
+
+/* Links */
+a {
+    color: #6f4e37;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: #8d6e63;
+    color: white;
+}
+
+/* Image Styling */
+td img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Button Styling */
+a.edit, a.delete {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+a.edit {
+    background-color: #6d4c41;
+    color: white;
+}
+
+a.delete {
+    background-color: #d32f2f;
+    color: white;
+}
+
+a.edit:hover, a.delete:hover {
+    opacity: 0.8;
+}
