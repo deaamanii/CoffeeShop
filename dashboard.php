@@ -136,6 +136,52 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
             }
             ?>
         </table>
+        <h2>Products</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price (€)</th>
+                <th>Image</th>
+                <th>Added By</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <?php
+           require_once 'DatabaseConnection.php'; // Siguron që përfshihet vetëm një herë
+
+
+            $db = new DatabaseConnection();
+            $conn = $db->startConnection();
+            
+
+            $sql = "SELECT products.*, users.username FROM products 
+                    JOIN users ON products.created_by = users.id 
+                    ORDER BY products.created_at DESC";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                    <tr>
+                        <td>{$row['id']}</td>
+                        <td>{$row['name']}</td>
+                        <td>{$row['description']}</td>
+                        <td>{$row['price']}</td>
+                        <td><img src='{$row['image']}' width='50' height='50'></td>
+                        <td>{$row['username']}</td>
+                        <td><a href='edit_product.php?id={$row['id']}'>Edit</a></td>
+                        <td><a href='delete_product.php?id={$row['id']}'>Delete</a></td>
+                    </tr>
+                    ";
+                }
+            } else {
+                echo "<tr><td colspan='8'>No products available.</td></tr>";
+            }
+            ?>
+        </table>
+    
     </div>
 </body>
 </html>
