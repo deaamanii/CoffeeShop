@@ -2,9 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 ?>
-
 <header class="headerContainer">
     <div class="logo">
         <a href="index.php"> 
