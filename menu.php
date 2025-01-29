@@ -40,6 +40,7 @@ $sql = "SELECT products.*, users.username FROM products
 $result = mysqli_query($conn, $sql);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +52,8 @@ $result = mysqli_query($conn, $sql);
 <body>
 
 <h1>Menu</h1>
-<a href="cart.php" class="cart-button"> Products in your 🛒 (<?= count($_SESSION['cart'] ?? []) ?>)</a>
+<a href="cart.php" class="cart-button">🛒 Products in your Cart (<?= count($_SESSION['cart'] ?? []) ?>)</a>
+
 
 <div class="menu">
     <?php

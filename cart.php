@@ -29,7 +29,7 @@ $conn = $db->startConnection();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Shporta | Coffee Bean</title>
+    <title>Cart | Coffee Bean</title>
     <link rel="stylesheet" href="cart.css">
     <style>
         body {

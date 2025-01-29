@@ -23,11 +23,27 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Coffee Bean Admin Dashboard</h1>
+
+   <!-- Navbar -->
+   <div style="background: #6D4C41; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+        <h2 style="color: #fff; margin: 0; font-family: 'Georgia', serif;">☕ Coffee Bean</h2>
+        <nav>
+            <a href="index.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Home</a>
+            <a href="aboutus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">About Us</a>
+            <a href="menu.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Menu</a>
+            <a href="contactus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Contact Us</a>
+            <a href="dashboard.php" style="color: #FFD54F; text-decoration: none; margin-right: 20px; font-weight: bold;">Dashboard</a>
+            <a href="logout.php" style="color: #FF7043; text-decoration: none; font-weight: bold;">Logout</a>
+        </nav>
     </div>
+
+    <!-- Header (Tani Navbar është mbi këtë pjesë) -->
+    <div class="header" style="background: #795548; color: white; text-align: center; padding: 20px 0; font-size: 24px; font-weight: bold;">
+        Coffee Bean Admin Dashboard
+    </div>
+
     <div class="container">
-        <h2>Admins</h2>
+        <h2>Admin</h2>
 
         <table>
             <tr>
@@ -83,10 +99,11 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
             }
             ?>
         </table>
+
         <h2>Products</h2>
         <a href="add_product.php" class="btn" style="display: inline-block; padding: 10px 15px; background-color: #4CAF50; 
     color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 15px;">
-    ➕ Shto Produkt
+    ➕ Add Product
 </a>
         <table>
             <tr>
@@ -102,11 +119,9 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
             <?php
            require_once 'DatabaseConnection.php'; // Siguron që përfshihet vetëm një herë
 
-
             $db = new DatabaseConnection();
             $conn = $db->startConnection();
             
-
             $sql = "SELECT products.*, users.username FROM products 
                     JOIN users ON products.created_by = users.id 
                     ORDER BY products.created_at DESC";
