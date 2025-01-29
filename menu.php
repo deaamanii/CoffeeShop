@@ -9,13 +9,30 @@
 
 <body>
 <?php
+session_start();
+
     include 'header.php';
     ?>
 <?php
+
+
 include 'DatabaseConnection.php'; // Lidhja me databazën
 
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
+
+// Kontrollo nëse është klikuar "Shto në Shportë"
+if (isset($_GET["action"]) && $_GET["action"] == "add" && isset($_GET["id"])) {
+    $productId = $_GET["id"];
+
+    if (!isset($_SESSION["cart"])) {
+        $_SESSION["cart"] = []; // Krijo shportën nëse nuk ekziston
+    }
+
+    $_SESSION["cart"][] = $productId; // Shto produktin në shportë
+    header("Location: menu.php"); // Rifreskon faqen për të shmangur ri-shtimin e produktit
+    exit();
+}
 
 $sql = "SELECT products.*, users.username FROM products 
         JOIN users ON products.created_by = users.id 
@@ -34,6 +51,7 @@ $result = mysqli_query($conn, $sql);
 <body>
 
 <h1>Menu</h1>
+<a href="cart.php" class="cart-button"> Products in your 🛒 (<?= count($_SESSION['cart'] ?? []) ?>)</a>
 
 <div class="menu">
     <?php
@@ -45,9 +63,14 @@ $result = mysqli_query($conn, $sql);
             echo '<p>' . $row["description"] . '</p>';
             echo '<p><strong>Price:</strong> ' . $row["price"] . '€</p>';
             echo '<p><em>Added by: ' . $row["username"] . '</em></p>';
+            if (isset($_SESSION["user_id"])) {
+                echo '<a href="cart.php?action=add&id=' . $row["id"] . '" class="buy-btn">🛒 Add to Cart</a>';
+            } else {
+                echo '<p><a href="login.php" class="login-to-cart">🔒 Log in to Add to Cart</a></p>';
+            }                       
             echo '</div>';
-        }
-    } else {
+    } 
+}else {
         echo "<p>No products available.</p>";
     }
     ?>
