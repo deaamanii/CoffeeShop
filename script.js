@@ -1,27 +1,22 @@
 let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
 
 function showSlide(index) {
-    const slides = document.querySelector('.slides');
-    const totalSlides = document.querySelectorAll('.slide').length;
-
-    // Rregullo indeksin nëse është jashtë kufijve
-    if (index >= totalSlides) {
+    if (index >= slides.length) {
         currentSlide = 0;
     } else if (index < 0) {
-        currentSlide = totalSlides - 1;
+        currentSlide = slides.length - 1;
     } else {
         currentSlide = index;
     }
 
-    // Apliko transformimin
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelector(".slides").style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-function changeSlide(direction) {
-    showSlide(currentSlide + direction);
-}
+document.querySelector(".next").addEventListener("click", () => showSlide(currentSlide + 1));
+document.querySelector(".prev").addEventListener("click", () => showSlide(currentSlide - 1));
 
-// Slider automatik që ndërrohet çdo 3 sekonda
-setInterval(() => {
-    changeSlide(1);
-}, 3000);
+showSlide(currentSlide);
+
+
+

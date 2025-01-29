@@ -1,3 +1,15 @@
+<?php
+include 'DatabaseConnection.php'; // Lidhja me databazën
+
+// Krijo një instancë të klasës DatabaseConnection
+$db = new DatabaseConnection();
+$conn = $db->startConnection();
+
+// Merr imazhet për slider-in nga databaza
+$sql = "SELECT * FROM slider";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,25 +20,24 @@
 </head>
 <body>
     <?php
-    include 'header.php';
+    include 'header.php'; // Përfshin navbar-in
     ?>
+    
     <main class="main-container">
+        <!-- Slider dinamik nga databaza -->
         <div class="slider-container">
             <div class="slides">
-                <div class="slide">
-                    <img src="images/slider3.jpg" alt="Coffee Pouring">
-                </div>
-                <div class="slide">
-                    <img src="images/slider2.jpg" alt="Coffee Shop Interior">
-                </div>
-                <div class="slide">
-                    <img src="images/slider1.jpg" alt="Coffee Cups">
-                </div>
+                <?php while ($row = $result->fetch_assoc()) { ?>
+                    <div class="slide">
+                        <img src="<?php echo $row['image_url']; ?>" alt="Coffee Image">
+                    </div>
+                <?php } ?>
             </div>
             <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
             <button class="next" onclick="changeSlide(1)">&#10095;</button>
         </div>
 
+        <!-- Përmbajtja kryesore -->
         <div class="content-container">
             <h1>Let's Talk Coffee</h1>
             <p>At Coffee Bean, we combine quality, ambiance, and affordability to deliver an exceptional experience. Whether you're here to study, catch up with friends, or simply unwind, we’ve got the perfect blend for you.</p>
@@ -36,7 +47,6 @@
     </main>
 
     <script src="script.js"></script>
-
 
     <!-- Footer Section -->
     <div class="footerWrapper">
