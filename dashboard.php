@@ -26,16 +26,19 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
 
    <!-- Navbar -->
    <div style="background: #6D4C41; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
-        <h2 style="color: #fff; margin: 0; font-family: 'Georgia', serif;">☕ Coffee Bean</h2>
-        <nav>
-            <a href="index.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Home</a>
-            <a href="aboutus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">About Us</a>
-            <a href="menu.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Menu</a>
-            <a href="contactus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Contact Us</a>
-            <a href="dashboard.php" style="color: #FFD54F; text-decoration: none; margin-right: 20px; font-weight: bold;">Dashboard</a>
-            <a href="logout.php" style="color: #FF7043; text-decoration: none; font-weight: bold;">Logout</a>
-        </nav>
-    </div>
+    <h2 style="color: #fff; margin: 0; font-family: 'Georgia', serif;">☕ Coffee Bean</h2>
+    <nav>
+        <a href="index.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Home</a>
+        <a href="aboutus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">About Us</a>
+        <a href="menu.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Menu</a>
+        <a href="dashboard.php" style="color: #FFD54F; text-decoration: none; margin-right: 20px; font-weight: bold;">Dashboard</a>
+        <a href="admin_about.php" style="color: #4CAF50; text-decoration: none; margin-right: 20px; font-weight: bold;">Manage About Us</a>
+        <a href="admin_reviews.php" style="color: #FFCA28; text-decoration: none; margin-right: 20px; font-weight: bold;">Manage Reviews</a>
+        <a href="logout.php" style="color: #FF7043; text-decoration: none; font-weight: bold;">Logout</a>
+    </nav>
+</div>
+
+
 
     <!-- Header (Tani Navbar është mbi këtë pjesë) -->
     <div class="header" style="background: #795548; color: white; text-align: center; padding: 20px 0; font-size: 24px; font-weight: bold;">

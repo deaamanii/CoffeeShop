@@ -52,7 +52,22 @@ $result = mysqli_query($conn, $sql);
 <body>
 
 <h1>Menu</h1>
-<a href="cart.php" class="cart-button">🛒 Products in your Cart (<?= count($_SESSION['cart'] ?? []) ?>)</a>
+<a href="cart.php" style="
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color:rgb(99, 48, 11); 
+    color: white; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-bottom: 20px;
+    display: block;
+    width: fit-content;">
+     Products in your 🛒 (<?= count($_SESSION['cart'] ?? []) ?>)
+</a>
 
 
 <div class="menu">
