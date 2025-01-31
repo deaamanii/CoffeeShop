@@ -14,18 +14,19 @@
 <!-- Main Content -->
 <main>
     <h1>Contact Us</h1>
-    <form id="contactForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Your email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" placeholder="Your message" rows="4" required></textarea>
-        
-        <button type="submit">Send</button>
-    </form>
+    <form action="submit_contact.php" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Your email" required>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" placeholder="Your message" rows="4" required></textarea>
+    
+    <button type="submit">Send</button>
+</form>
+
 
     <blockquote class="quote">"Coffee is a hug in a mug."</blockquote>
 
