@@ -31,6 +31,7 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
         <a href="index.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Home</a>
         <a href="aboutus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">About Us</a>
         <a href="menu.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Menu</a>
+        <a href="contactus.php" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">Contact Us</a>
         <a href="dashboard.php" style="color: #FFD54F; text-decoration: none; margin-right: 20px; font-weight: bold;">Dashboard</a>
         <a href="admin_about.php" style="color: #4CAF50; text-decoration: none; margin-right: 20px; font-weight: bold;">Manage About Us</a>
         <a href="admin_reviews.php" style="color: #FFCA28; text-decoration: none; margin-right: 20px; font-weight: bold;">Manage Reviews</a>
