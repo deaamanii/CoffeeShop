@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: register.php");
     }
 
-    $role = "user"; // Vendos rolin e përdoruesit
-    $createdAt = date("Y-m-d H:i:s"); // Vendos kohën e krijimit të përdoruesit
+    $role = "user"; 
+    $createdAt = date("Y-m-d H:i:s"); 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $inserted = $userRepository->insertUser($username, $email, $hashedPassword, $role, $createdAt);
 

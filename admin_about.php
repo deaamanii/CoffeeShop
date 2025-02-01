@@ -12,12 +12,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 <?php
 include 'DatabaseConnection.php';
 
-$db = new DatabaseConnection(); // Create an instance of the class
-$conn = $db->startConnection(); // Call the function to get the connection
+$db = new DatabaseConnection(); 
+$conn = $db->startConnection(); 
 
 
-
-// Nëse forma është dorëzuar, përditëso databazën
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $conn->real_escape_string($_POST['title']);
     $content = $conn->real_escape_string($_POST['content']);
@@ -32,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Merr të dhënat aktuale nga databaza
 $sql = "SELECT title, content, image_url FROM about_us WHERE id=1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();

@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Kontrollon nëse shporta ekziston, nëse jo e krijon
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = [];
 }
 
-// Shton produktin në shportë
 if (isset($_GET["action"]) && $_GET["action"] == "add" && isset($_GET["id"])) {
     $product_id = $_GET["id"];
 
@@ -14,11 +12,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "add" && isset($_GET["id"])) {
         $_SESSION["cart"][] = $product_id;
     }
 
-    header("Location: cart.php"); // Ridrejtohet te shporta
+    header("Location: cart.php");
     exit();
 }
 
-// Lidhja me databazën
 include 'DatabaseConnection.php';
 $db = new DatabaseConnection();
 $conn = $db->startConnection();

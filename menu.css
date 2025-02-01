@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+    box-sizing: border-box; 
 }
 
 body {
@@ -12,10 +12,9 @@ body {
     background-color: #f0e5d8;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
 }
 
-/* Header Styling */
 .headerContainer {
     display: flex;
     justify-content: space-between;
@@ -61,7 +60,6 @@ body {
     margin-right: 0;
 }
 
-/* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     .headerContainer {
         flex-direction: column;
@@ -76,7 +74,7 @@ body {
     .headerContainer a {
         margin-right: 15px;
         margin-bottom: 10px;
-        font-size: 14px; /* Reduce font size on small screens */
+        font-size: 14px; 
     }
 
     .headerContainer .logo img {
@@ -84,17 +82,15 @@ body {
     }
 }
 
-/* Spacer Below Header */
 body > h1 {
     text-align: center;
     color: #4b2e1a;
-    font-size: 2.5em; /* Adjust font size for larger headers */
+    font-size: 2.5em; 
 }
 
-/* Menu Grid */
 .menu {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Produkte të organizuara më mirë */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 20px;
     padding: 20px;
     width: 90%;
@@ -102,7 +98,6 @@ body > h1 {
     justify-items: center;
 }
 
-/* Menu Items */
 .menu-item {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -114,10 +109,9 @@ body > h1 {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    max-width: 400px; /* Kufizon gjerësinë e secilit produkt */
+    max-width: 400px; 
 }
 
-/* Images */
 .menu-item img {
     width: 100%;
     max-height: 250px;
@@ -126,40 +120,35 @@ body > h1 {
     margin-bottom: 15px;
 }
 
-/* Titles */
 .menu-item h3 {
     font-size: 1.5em;
-    color: #4b2e1a; /* Ngjyra e titullit */
+    color: #4b2e1a;
     margin-bottom: 10px;
 }
 
-/* Description */
 .menu-item p {
     color: #555;
     font-size: 1.1em;
     margin: 8px 0;
 }
 
-/* Price */
 .menu-item strong {
     color: #000;
     font-weight: bold;
     font-size: 1.2em;
 }
 
-/* Added by */
 .menu-item em {
     color: #777;
     font-size: 1em;
 }
 
-/* Footer Styling */
 .footerWrapper {
     background-color: #4b2e1a;
     color: #ffffff;
     text-align: center;
     padding: 20px;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    margin-top: auto; 
     width: 100%;
 }
 
@@ -195,25 +184,24 @@ body > h1 {
     transform: scale(1.2);
 }
 
-/* Ensuring Layout Consistency */
 html, body {
-    height: 100%; /* Guarantees the full height for the layout */
+    height: 100%; 
 }
 
-/* Responsiveness for Very Small Screens (Below 480px) */
 @media (max-width: 480px) {
     .headerContainer a {
-        font-size: 12px; /* Further reduce font size for very small screens */
+        font-size: 12px; 
     }
 
     .menu-item img {
-        height: 200px; /* Reduce image size for very small screens */
+        height: 200px; 
     }
 
     body > h1 {
-        font-size: 2em; /* Reduce heading size on small screens */
+        font-size: 2em; 
     }
 }
+
 .buy-btn {
     display: inline-block;
     padding: 10px 15px;

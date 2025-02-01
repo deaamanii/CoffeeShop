@@ -9,7 +9,6 @@ include 'DatabaseConnection.php';
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Përditësimi i një review ekzistues
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_review'])) {
     $review_id = intval($_POST['review_id']);
     $customer_name = $conn->real_escape_string($_POST['customer_name']);
@@ -25,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_review'])) {
     }
 }
 
-// Merr të gjitha opinionet nga databaza
 $sql_reviews = "SELECT * FROM reviews";
 $result_reviews = $conn->query($sql_reviews);
 

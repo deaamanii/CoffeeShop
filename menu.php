@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Coffee Bean</title>
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="menu.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -16,21 +16,19 @@ session_start();
 <?php
 
 
-include 'DatabaseConnection.php'; // Lidhja me databazën
-
+include 'DatabaseConnection.php'; 
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Kontrollo nëse është klikuar "Shto në Shportë"
 if (isset($_GET["action"]) && $_GET["action"] == "add" && isset($_GET["id"])) {
     $productId = $_GET["id"];
 
     if (!isset($_SESSION["cart"])) {
-        $_SESSION["cart"] = []; // Krijo shportën nëse nuk ekziston
+        $_SESSION["cart"] = []; 
     }
 
-    $_SESSION["cart"][] = $productId; // Shto produktin në shportë
-    header("Location: menu.php"); // Rifreskon faqen për të shmangur ri-shtimin e produktit
+    $_SESSION["cart"][] = $productId; 
+    header("Location: menu.php"); 
     exit();
 }
 
@@ -47,7 +45,7 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Coffee Bean</title>
-    <link rel="stylesheet" href="menu.css"> <!-- Përfshin stilizimin -->
+    <link rel="stylesheet" href="menu.css"> 
 </head>
 <body>
 
@@ -93,7 +91,6 @@ $result = mysqli_query($conn, $sql);
     ?>
 </div>
 
-<!-- Footer Section -->
 <div class="footerWrapper">
         <footer class="footerContainer">
             <div class="footerContent">

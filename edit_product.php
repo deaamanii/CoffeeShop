@@ -5,7 +5,6 @@ include 'DatabaseConnection.php';
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Merr ID-në nga URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($id > 0) {
@@ -26,13 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = mysqli_real_escape_string($conn, $_POST["description"]);
     $price = floatval($_POST["price"]);
 
-    // Kontrollo nëse është ngarkuar një imazh i ri
     if (!empty($_FILES["image"]["name"])) {
         $image_name = basename($_FILES["image"]["name"]);
         $image_path = "images/" . $image_name;
         move_uploaded_file($_FILES["image"]["tmp_name"], $image_path);
     } else {
-        $image_path = $product["image"]; // Mban të njëjtin imazh nëse nuk ndryshohet
+        $image_path = $product["image"];
     }
 
     $sql = "UPDATE products SET name='$name', description='$description', price=$price, image='$image_path' WHERE id=$id";
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #4E342E; /* Ngjyra kafe */
+            background-color: #4E342E; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -74,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         h2 {
             margin-bottom: 20px;
-            color: #3E2723; /* Ngjyrë kafe më e errët */
+            color: #3E2723; 
         }
 
         label {
@@ -82,14 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: block;
             margin: 10px 0 5px;
             text-align: left;
-            color: #5D4037; /* Ngjyrë kafe e mesme */
+            color: #5D4037; 
         }
 
         input, textarea {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
-            border: 1px solid #A1887F; /* Kufizim i butë kafe */
+            border: 1px solid #A1887F; 
             border-radius: 5px;
             font-size: 14px;
         }
@@ -108,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .btn {
-            background: #795548; /* Ngjyra kafe mesatare */
+            background: #795548; 
             color: white;
             border: none;
             padding: 10px;
@@ -120,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .btn:hover {
-            background: #5D4037; /* Ngjyra kafe më e errët */
+            background: #5D4037;
         }
     </style>
 </head>

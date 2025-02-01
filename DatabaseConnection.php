@@ -2,7 +2,7 @@
 
 class DatabaseConnection {
     private $server = "localhost";
-    private $port = "3307"; // Added the custom port
+    private $port = "3307";
     private $username = "root";
     private $password = "";
     private $database = "coffee_bean";

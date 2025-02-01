@@ -1,12 +1,9 @@
 <?php
-// Përfshi skedarin që përmban lidhjen me databazën
 include_once 'DatabaseConnection.php';
 
-// Krijo një objekt të klasës DatabaseConnection
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Përdor lidhjen me databazën për të marrë të dhënat e faqes "About Us"
 $sql = "SELECT title, content, image_url FROM about_us LIMIT 1";
 $result = $conn->query($sql);
 
@@ -21,7 +18,6 @@ if ($result->num_rows > 0) {
     $image = "images/foto.jpg"; 
 }
 
-// Merr opinionet nga tabela `reviews`
 $sql_reviews = "SELECT customer_name, review, rating FROM reviews";
 $result_reviews = $conn->query($sql_reviews);
 
@@ -70,7 +66,6 @@ $conn->close();
         <img src="<?php echo $image; ?>" alt="Cozy Coffee Shop" class="highlight-image">
     </section>
     
-    <!-- Client Reviews Section -->
     <section class="reviews-section">
         <h2>What Our Customers Say</h2>
         <div class="reviews-container">
@@ -95,7 +90,6 @@ $conn->close();
     </section>
 </main>
 
-<!-- Footer Section -->
 <div class="footerWrapper">
     <footer class="footerContainer">
         <div class="footerContent">

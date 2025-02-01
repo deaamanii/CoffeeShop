@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+    box-sizing: border-box; 
 }
 
 body {
@@ -12,10 +12,9 @@ body {
     background-color: #f0e5d8;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
 }
 
-/* Header Styling */
 .headerContainer {
     display: flex;
     justify-content: space-between;
@@ -61,7 +60,6 @@ body {
     margin-right: 0;
 }
 
-/* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     .headerContainer {
         flex-direction: column;
@@ -83,7 +81,6 @@ body {
     }
 }
 
-/* Contact Form */
 form {
     display: flex;
     flex-direction: column;
@@ -139,20 +136,18 @@ form button:hover {
     color: #4cac50;
 }
 
-/* Main */
 main {
     max-width: 800px;
     width: 100%;
-    margin: 20px auto; /* Added margin-top to create space between header and content */
+    margin: 20px auto; 
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
-/* Footer Styling */
 .footerWrapper {
-    margin-top: auto; /* Footer will be pushed to the bottom */
+    margin-top: auto; 
     width: 100%;
 }
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'DatabaseConnection.php'; // Lidhja me databazën
+include 'DatabaseConnection.php'; 
 
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
@@ -9,23 +9,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST["product_name"]);
     $description = mysqli_real_escape_string($conn, $_POST["description"]);
     $price = floatval($_POST["price"]);
-    $created_by = $_SESSION["user_id"]; // ID e përdoruesit që po shton produktin
+    $created_by = $_SESSION["user_id"]; 
 
-    // Kontrollo dhe ngarko foton
     if (!empty($_FILES["image"]["name"])) {
         $image_name = basename($_FILES["image"]["name"]);
-        $image_path = "images/" . $image_name; // Tani ruhet në dosjen e duhur
+        $image_path = "images/" . $image_name; 
         move_uploaded_file($_FILES["image"]["tmp_name"], $image_path);
     } else {
-        $image_path = "images/default.jpg"; // Foto default nëse mungon
+        $image_path = "images/default.jpg"; 
     }
 
-    // Ruajtja në databazë
     $sql = "INSERT INTO products (name, description, price, image, created_by, created_at) 
             VALUES ('$name', '$description', $price, '$image_path', '$created_by', NOW())";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: dashboard.php"); // Kthehet te dashboardi pas shtimit të produktit
+        header("Location: dashboard.php"); 
         exit();
     } else {
         echo "<p style='color:red;'>Gabim: " . mysqli_error($conn) . "</p>";
@@ -41,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #4E342E; /* Ngjyra kafe */
+            background-color: #4E342E;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -60,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         h2 {
             margin-bottom: 20px;
-            color: #3E2723; /* Ngjyrë kafe më e errët */
+            color: #3E2723;
         }
 
         label {
@@ -68,14 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: block;
             margin: 10px 0 5px;
             text-align: left;
-            color: #5D4037; /* Ngjyrë kafe e mesme */
+            color: #5D4037; 
         }
 
         input, textarea {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
-            border: 1px solid #A1887F; /* Kufizim i butë kafe */
+            border: 1px solid #A1887F;
             border-radius: 5px;
             font-size: 14px;
         }
@@ -85,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .btn {
-            background: #795548; /* Ngjyra kafe mesatare */
+            background: #795548; 
             color: white;
             border: none;
             padding: 10px;
@@ -97,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .btn:hover {
-            background: #5D4037; /* Ngjyra kafe më e errët */
+            background: #5D4037; 
         }
     </style>
 </head>

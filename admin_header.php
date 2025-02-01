@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: index.php'); // Redirect to login page if not admin
+    header('Location: index.php');
     exit();
 }
 ?>
@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="dashboard.css"> <!-- Adjust this if needed -->
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
 

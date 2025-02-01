@@ -24,7 +24,6 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
 </head>
 <body>
 
-   <!-- Navbar -->
    <div style="background: #6D4C41; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
     <h2 style="color: #fff; margin: 0; font-family: 'Georgia', serif;">☕ Coffee Bean</h2>
     <nav>
@@ -40,8 +39,6 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
 </div>
 
 
-
-    <!-- Header (Tani Navbar është mbi këtë pjesë) -->
     <div class="header" style="background: #795548; color: white; text-align: center; padding: 20px 0; font-size: 24px; font-weight: bold;">
         Coffee Bean Admin Dashboard
     </div>
@@ -121,7 +118,7 @@ $regularUsers = $userRepository->getAllUsersByRole('user');
                 <th>Delete</th>
             </tr>
             <?php
-           require_once 'DatabaseConnection.php'; // Siguron që përfshihet vetëm një herë
+           require_once 'DatabaseConnection.php'; 
 
             $db = new DatabaseConnection();
             $conn = $db->startConnection();

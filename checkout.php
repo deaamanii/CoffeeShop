@@ -1,16 +1,14 @@
 <?php
 session_start();
-// Kontrollon nëse përdoruesi është i kyçur
 if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php"); // Ridrejtohet në login.php nëse nuk është i kyçur
+    header("Location: login.php"); 
     exit();
 }
-include 'DatabaseConnection.php'; // Lidhja me databazën
+include 'DatabaseConnection.php'; 
 
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Kontrollo nëse ka produkte në shportë
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     ?>
     <!DOCTYPE html>
@@ -18,7 +16,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     <head>
         <meta charset="UTF-8">
         <title>Cart is Empty | Coffee Bean</title>
-        <link rel="stylesheet" href="checkout.css"> <!-- Lidhja me CSS -->
+        <link rel="stylesheet" href="checkout.css"> 
     </head>
     <body>
 
@@ -35,7 +33,6 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     exit();
 }
 
-// Marrim ID-të e produkteve nga shporta
 $cartItems = $_SESSION['cart'];
 $cartProducts = [];
 
@@ -47,9 +44,8 @@ foreach ($cartItems as $productId) {
     }
 }
 
-// Nëse klikohet butoni "Paguaj", shfaq faqen e falënderimit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $_SESSION["cart"] = []; // Zbraz shportën pas pagesës
+    $_SESSION["cart"] = []; 
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -122,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="checkout.css"> <!-- Stilizimi -->
+    <link rel="stylesheet" href="checkout.css">
 </head>
 <body>
 

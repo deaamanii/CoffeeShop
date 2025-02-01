@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+    box-sizing: border-box; 
 }
 
 body {
@@ -12,10 +12,9 @@ body {
     background-color: #f0e5d8;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
 }
 
-/* Header Styling */
 .headerContainer {
     display: flex;
     justify-content: space-between;
@@ -61,7 +60,6 @@ body {
     margin-right: 0;
 }
 
-/* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     .headerContainer {
         flex-direction: column;
@@ -83,18 +81,15 @@ body {
     }
 }
 
-/* Main Container Styling */
 .mainContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    /*margin-top: 10px; /* Prevents overlap with the fixed header */
     padding: 20px;
     background-color: #f0e5d8;
 }
 
-/* Auth Container */
 .auth-container {
     background-color: #fff;
     padding: 30px;
@@ -105,7 +100,6 @@ body {
     max-width: 400px;
 }
 
-/* Toggle Buttons */
 .toggle-buttons {
     display: flex;
     justify-content: space-between;
@@ -134,7 +128,6 @@ body {
     background-color: #ddd;
 }
 
-/* Form Styling */
 .auth-container h2 {
     font-size: 24px;
     color: #333;
@@ -174,22 +167,20 @@ body {
     background-color: #5c2a1f;
 }
 
-/* Error Message Styling */
 #errorMessage {
     color: red;
     font-size: 14px;
     margin-top: -15px;
 }
 
-/* Hidden Class for Toggle */
 .hidden {
     display: none;
 }
 
-/* Footer Styling */
+
 .footerWrapper {
     width: 100%;
-    margin-top: auto; /* Ensures footer stays at the bottom */
+    margin-top: auto;
 }
 
 .footerContainer {

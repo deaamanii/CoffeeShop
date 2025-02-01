@@ -45,7 +45,6 @@ if (isset($_SESSION['user_id'])) {
                     unset($_SESSION['message_type']);
                 }
             ?>
-            <!-- Login Form -->
             <div id="loginForm" class="form-container">
                 <h2>Welcome to Coffee Bean</h2>
                 <form method="post" action="loginController.php" id="loginFormElement">
@@ -58,7 +57,6 @@ if (isset($_SESSION['user_id'])) {
                 <p id="errorMessage"></p>
             </div>
 
-            <!-- Register Form -->
             <div id="registerForm" class="form-container hidden">
                 <h2>Join Coffee Bean</h2>
                 <form action="registerController.php" method="POST">

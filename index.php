@@ -1,11 +1,9 @@
 <?php
-include 'DatabaseConnection.php'; // Lidhja me databazën
+include 'DatabaseConnection.php'; 
 
-// Krijo një instancë të klasës DatabaseConnection
 $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
-// Merr imazhet për slider-in nga databaza
 $sql = "SELECT * FROM slider";
 $result = $conn->query($sql);
 ?>
@@ -20,11 +18,10 @@ $result = $conn->query($sql);
 </head>
 <body>
     <?php
-    include 'header.php'; // Përfshin navbar-in
+    include 'header.php'; 
     ?>
     
     <main class="main-container">
-        <!-- Slider dinamik nga databaza -->
         <div class="slider-container">
             <div class="slides">
                 <?php while ($row = $result->fetch_assoc()) { ?>
@@ -37,7 +34,6 @@ $result = $conn->query($sql);
             <button class="next" onclick="changeSlide(1)">&#10095;</button>
         </div>
 
-        <!-- Përmbajtja kryesore -->
         <div class="content-container">
             <h1>Let's Talk Coffee</h1>
             <p>At Coffee Bean, we combine quality, ambiance, and affordability to deliver an exceptional experience. Whether you're here to study, catch up with friends, or simply unwind, we’ve got the perfect blend for you.</p>
@@ -48,7 +44,6 @@ $result = $conn->query($sql);
 
     <script src="script.js"></script>
 
-    <!-- Footer Section -->
     <div class="footerWrapper">
         <footer class="footerContainer">
             <div class="footerContent">

@@ -1,8 +1,7 @@
 <?php
 session_start();
-include 'DatabaseConnection.php'; // Lidhja me databazën
+include 'DatabaseConnection.php'; 
 
-// Kontrollo nëse përdoruesi është admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
     die("Nuk keni akses për të fshirë produktet!");
 }
@@ -11,13 +10,13 @@ $db = new DatabaseConnection();
 $conn = $db->startConnection();
 
 if (isset($_GET["id"])) {
-    $id = intval($_GET["id"]); // Siguro që ID është numër për siguri
+    $id = intval($_GET["id"]); 
 
-    // Ekzekuto fshirjen
+
     $sql = "DELETE FROM products WHERE id = $id";
     if (mysqli_query($conn, $sql)) {
-        mysqli_close($conn); // Mbyll lidhjen me databazën
-        header("Location: dashboard.php?delete=success"); // Ridrejto adminin te dashboard
+        mysqli_close($conn); 
+        header("Location: dashboard.php?delete=success"); 
         exit();
     } else {
         echo "<p style='color:red;'>Gabim: " . mysqli_error($conn) . "</p>";

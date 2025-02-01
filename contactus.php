@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="contactus.css">
 </head>
 <body>
-    <!-- Header -->
     <?php
     include 'header.php';
     ?>
-<!-- Main Content -->
 <main>
     <h1>Contact Us</h1>
     <form action="submit_contact.php" method="post">
@@ -54,7 +52,6 @@
     </div>
 </main>
 
-<!-- Footer Section -->
 <div class="footerWrapper">
     <footer class="footerContainer">
         <div class="footerContent">
